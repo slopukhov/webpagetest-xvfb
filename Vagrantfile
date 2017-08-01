@@ -4,7 +4,7 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "chef/centos-6.5"
+  config.vm.box = "bento/centos-6.8"
   config.vm.provider "parallels" do |v, override|
     override.vm.box = "parallels/centos-6.5"
   end

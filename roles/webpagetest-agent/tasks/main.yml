@@ -5,6 +5,9 @@
   ignore_errors: yes
   command: rpm -Uvh /tmp/epel-release-6-8.noarch.rpm
 
+- name: Ensure Chromium repo is installed
+  get_url: url=http://people.centos.org/hughesjr/chromium/6/chromium-el6.repo dest=/etc/yum.repos.d/chromium-el6.repo
+
 - name: be sure yum packages are installed
   yum: >
     name={{ item }}
@@ -13,6 +16,7 @@
     - git
     - nodejs
     - npm
+    - chromium
 
 - name: Checkout webpagetest repo
   git: repo=https://github.com/WPO-Foundation/webpagetest.git
@@ -21,17 +25,8 @@
 - name: Ensure correct ownership webpagetest repo
   command: chown -R {{ user }}:{{ user }} /opt/webpagetest
 
-- name: Install Chrome - Download Richard Lloyd script
-  get_url: url=http://chrome.richardlloyd.org.uk/install_chrome.sh dest=/tmp/install_chrome.sh
-
-- name: Install Chrome - ensure script is executable
-  command: chmod +x /tmp/install_chrome.sh
-
 - name: Install Chrome - exec script
-  command: /tmp/install_chrome.sh -f creates=/usr/bin/google-chrome
-
-- name: Install Chrome - exec script
-  command: ln -s /usr/bin/google-chrome /usr/bin/chrome creates=/usr/bin/chrome
+  command: ln -s /usr/bin/chromium-browser /usr/bin/chrome creates=/usr/bin/chrome
 
 - name: Install Xvfb
   yum: name=Xvfb state=present

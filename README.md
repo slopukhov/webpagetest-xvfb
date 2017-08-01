@@ -1,10 +1,10 @@
 # webpagetest-xvfb
 
-Based off [bayandin's webpagetest-private](https://github.com/bayandin/webpagetest-private) repository.
+Based off [dominykas/webpagetest-xvfb](https://github.com/dominykas/webpagetest-xvfb) repository.
 
 ## About
 
-For local installation [WebPagetest Private Instance](https://github.com/WPO-Foundation/webpagetest), with a local Chrome agent driven by the [node.js agent](https://sites.google.com/a/webpagetest.org/docs/private-instances/node-js-agent/setup) and [Xvfb](http://en.wikipedia.org/wiki/Xvfb).
+For local installation [WebPagetest Private Instance](https://github.com/WPO-Foundation/webpagetest), with a local Chrome(chromium) agent driven by the [node.js agent](https://sites.google.com/a/webpagetest.org/docs/private-instances/node-js-agent/setup) and [Xvfb](http://en.wikipedia.org/wiki/Xvfb).
 
 WebPagetest server and agent are configured to run all on one system -
 CentOS
@@ -12,7 +12,7 @@ CentOS
 
 The `webpagetest-agent` Ansible role will:
 
-- Install Chrome and Xvfb
+- Install Chrome(chromium) and Xvfb
 - Setup appropriate webpagetest's locations.ini file, with a "Local"
   location
 - Setup init.d script for Xvfb and the Chrome agent - `tail -f
@@ -29,20 +29,13 @@ The `webpagetest-agent` Ansible role will:
 ### Clone repository
 
 ```sh
-$ git clone https://github.com/mklabs/webpagetest-xvfb.git
+$ git clone https://github.com/slopukhov/webpagetest-xvfb
 ```
 
 ### Boot vagrant
 
 ```sh
 $ vagrant up
-```
-
-You can also use the Ansible playbook without Vagrant.
-
-```sh
-# Edit /etc/ansible/hosts and add a node for [webpagetest-private]
-$ ansible-playbook ./webpagetest-private.yml
 ```
 
 ### Browse `http://192.168.33.33:8080`
