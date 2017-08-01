@@ -1,6 +1,6 @@
 - name: download webpagetest
   get_url: >
-    url=https://github.com/WPO-Foundation/webpagetest/releases/download/WebPagetest-{{ wpt_version }}/webpagetest_{{ wpt_version }}.zip
+    url=https://github.com/WPO-Foundation/webpagetest/releases/download/WebPageTest-{{ wpt_version }}/webpagetest_{{ wpt_version }}.zip
     dest=/tmp/webpagetest_{{ wpt_version }}.zip
 
 - name: extract chromedriver from archive
